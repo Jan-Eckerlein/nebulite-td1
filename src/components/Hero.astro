@@ -1,0 +1,20 @@
+---
+import RichText from '../cms/ui_fields/RichText.svelte';
+import Image from '../cms/ui_fields/Image.svelte';
+import Hero from './Hero.vue'
+
+---
+
+<Hero>
+	<Image 
+		slot="image" 
+		client:load 
+		edit={true}
+	/>
+	<RichText 
+		slot="text" 
+		client:load 
+		value="text" 
+		edit={true} 
+	/>
+</Hero>

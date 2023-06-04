@@ -1,46 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SvelteCounter from '../components/SvelteCounter.svelte';
-import SolidCounter from '../components/SolidCounter';
-import Wrapper from '../components/Wrapper.svelte';
-import VueAlertComponent from '../components/VueAlertComponent.vue';
+import Hero from '../components/Hero.astro';
 
-const layout = [
-  {
-    name: 'section 1',
-    component: 'SvelteCounter',
-  },
-  {
-    name: 'section 2',
-    component: 'SvelteCounter',
-  },
-  {
-    name: 'section',
-    component: 'SolidCounter',
-  },
-]
 ---
 
 <Layout title="Nebulite Techdemo 1">
-	<main>
-    {layout.map(({ name, component }) => (
-      <div>
-        <h2>{name}</h2>
-				{component == 'SvelteCounter' && <SvelteCounter count={2} />}
-				{component == 'SolidCounter' && <SolidCounter/>}
-      </div>
-    ))
-    }
-	</main>
-	<section class="mt-12 w-full bg-green-200">
-		<div class="container">
-			<Wrapper client:load>
-				<h2>Section 3</h2>
-				<SolidCounter client:load/>
-				<VueAlertComponent client:load/>
-			</Wrapper>
-		</div>
-	</section>
+	<Hero/>
 </Layout>
 
 <style>
