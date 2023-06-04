@@ -3,7 +3,6 @@ import RichText from '../cms/ui_fields/RichText.svelte';
 import Image from '../cms/ui_fields/Image.svelte';
 import Hero from './Hero.vue'
 
-const {edit} = Astro.props;
 
 ---
 
@@ -11,12 +10,10 @@ const {edit} = Astro.props;
 	<Image 
 		slot="image" 
 		client:load 
-		{edit}
 	/>
 	<RichText 
 		slot="text" 
 		client:load 
 		value="text" 
-		{edit}
 	/>
 </Hero>

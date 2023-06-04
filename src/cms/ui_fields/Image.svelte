@@ -1,5 +1,6 @@
 <script lang="ts">
-	export let edit = false;
+	import {editMode} from '../stores/editStore'
+	
 	export let src = 'https://www.mxwiki.com/password/wp-content/plugins/accelerated-mobile-pages/images/SD-default-image.png';
 	export let alt = 'Image';
 	export let sizing = 'cover';
@@ -10,7 +11,7 @@
 	$: style = `object-fit: ${sizing}; object-position: ${positionX} ${positionY};`;
 </script>
 
-{#if edit}
+{#if $editMode}
 	<div class="edit-wrapper">
 		<img 
 			{src} 

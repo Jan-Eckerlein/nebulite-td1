@@ -1,12 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-
-const edit = false;
+import EditToggle from '../cms/elements/EditToggle.svelte';
 ---
 
 <Layout title="Nebulite Techdemo 1">
-	<Hero {edit}/>
+	<EditToggle client:load/>
+	<Hero/>
 </Layout>
 
 <style>

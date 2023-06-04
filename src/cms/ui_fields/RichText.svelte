@@ -1,5 +1,5 @@
 <script>
-	export let edit = false;
+	import {editMode} from '../stores/editStore'
 
 	export let value = '';
 	export let minRows = 1;
@@ -9,8 +9,7 @@
 	$: maxHeight = maxRows ? `${1 + maxRows * 1.2}em` : `auto`;
 </script>
 
-{#if edit}
-
+{#if $editMode}
 	<div class="edit-wrapper">
 		<pre
 			aria-hidden="true"
@@ -28,9 +27,9 @@
 		width: 100%;
 	}
 	
-	pre, textarea {
+	pre, textarea, p {
 		font-family: inherit;
-		padding: 0.5em;
+		padding: 0;
 		box-sizing: border-box;
 		line-height: 1.2;
 		overflow: hidden;
