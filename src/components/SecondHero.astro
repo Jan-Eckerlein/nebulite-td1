@@ -1,0 +1,17 @@
+---
+import SecondHero from './SecondHero.jsx'
+import RichText from '../cms/ui_fields/RichText.svelte';
+import Image from '../cms/ui_fields/Image.svelte';
+---
+
+<SecondHero>
+	<Image 
+		slot="image" 
+		client:load 
+	/>
+	<RichText 
+		slot="text" 
+		client:load 
+		value="text" 
+	/>
+</SecondHero>
