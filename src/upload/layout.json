@@ -16,6 +16,12 @@
     "component": "Hero"
   },
   {
+    "component": "Hero"
+  },
+  {
+    "component": "Hero"
+  },
+  {
     "component": "SecondHero",
     "props": {
       "text": "This is a very special Hero, believe me.",
