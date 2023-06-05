@@ -1,0 +1,31 @@
+[
+	{
+		"component": "Hero"
+	},
+	{
+		"component": "SecondHero",
+		"props": {
+			"text": "Hello World",
+			"image": {
+				"src": "https://cdn.pixabay.com/photo/2023/05/29/16/55/pie-8026562_1280.jpg",
+				"alt": "Image",
+				"sizing": "cover",
+				"positionX": "center",
+				"positionY": "top"
+			}
+		}
+	},
+	{
+		"component": "SecondHero",
+		"props": {
+			"text": "This is a very special Hero, believe me.",
+			"image": {
+				"src": "https://cdn.pixabay.com/photo/2023/05/31/09/57/skyscraper-8030987_1280.jpg",
+				"alt": "Image",
+				"sizing": "cover",
+				"positionX": "center",
+				"positionY": "top"
+			}
+		}
+	}
+]

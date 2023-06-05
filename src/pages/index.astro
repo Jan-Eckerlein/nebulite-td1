@@ -5,41 +5,13 @@ import EditToggle from "../cms/elements/EditToggle.svelte";
 let components: {[key: string]: any} = {};
 Object.entries(await Astro.glob("../components/*.astro")).forEach(([_, c]) => {
 	const name: string = c.file.split("/").pop()?.split(".")[0] ?? '';
-	if (!name) return;
+	if (!name) return true;
 	components[name] = c;
 });
 
-const layout = [
-	{
-		component: "Hero",
-	},
-	{
-		component: "SecondHero",
-		props: {
-			text: "Hello World",
-			image: {
-				src: "https://cdn.pixabay.com/photo/2023/05/29/16/55/pie-8026562_1280.jpg",
-				alt: "Image",
-				sizing: "cover",
-				positionX: "center",
-				positionY: "top",
-			},
-		},
-	},
-	{
-		component: "SecondHero",
-		props: {
-			text: "This is a very special Hero, believe me.",
-			image: {
-				src: "https://cdn.pixabay.com/photo/2023/05/31/09/57/skyscraper-8030987_1280.jpg",
-				alt: "Image",
-				sizing: "cover",
-				positionX: "center",
-				positionY: "top",
-			},
-		},
-	},
-];
+const layout = await Astro.glob("../upload/layout.json").then(async (files) => {
+	return files[0].default;
+});
 ---
 
 <Layout title="Nebulite Techdemo 1">
