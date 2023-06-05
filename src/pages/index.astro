@@ -1,8 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
-import SecondHero from "../components/SecondHero.astro";
 import EditToggle from "../cms/elements/EditToggle.svelte";
+// import SecondHero from "../components/SecondHero";
+
+
+const components = Object.entries(await Astro.glob("../components/*.astro")).map(([_, component]) => ({
+	name: component.file.split("/").pop()?.split(".")[0],
+	default: component.default,
+}));
+
+console.log(components);
 
 const layout = [
 	{
@@ -10,22 +17,34 @@ const layout = [
 	},
 	{
 		component: "SecondHero",
+		props: {
+			text: "Hello World",
+			image: {
+				src: "https://www.mxwiki.com/password/wp-content/plugins/accelerated-mobile-pages/images/SD-default-image.png",
+				alt: "Image",
+				sizing: "cover",
+				positionX: "center",
+				positionY: "top",
+			},
+		},
 	},
 ];
-
-const image = {
-	src: "https://www.mxwiki.com/password/wp-content/plugins/accelerated-mobile-pages/images/SD-default-image.png",
-	alt: "Image",
-	sizing: "cover",
-	positionX: "center",
-	positionY: "top",
-};
 ---
 
 <Layout title="Nebulite Techdemo 1">
 	<EditToggle client:idle />
+
+	{components.map(component => <component.default />)}
+
+	<!-- {components.map((component) => {
+		return <component.default />;
+		const name = component.path.split("/").pop().split(".")[0];
+		const props = layout.find((c) => c.component === name)?.props;
+		return <{name} {...props} />;
+	})} -->
+
 	<!-- <Hero/> -->
-	<SecondHero text="Hello World" {image} />
+	<!-- <SecondHero /> -->
 </Layout>
 
 <style></style>
