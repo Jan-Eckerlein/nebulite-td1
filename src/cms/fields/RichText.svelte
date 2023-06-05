@@ -7,6 +7,8 @@
 	
 	$: minHeight = `${1 + minRows * 1.2}em`;
 	$: maxHeight = maxRows ? `${1 + maxRows * 1.2}em` : `auto`;
+
+	console.log(value);
 </script>
 
 {#if $editMode}
@@ -18,7 +20,15 @@
 		<textarea class="cms-edit" bind:value></textarea>
 	</div>
 {:else}
-	<p>{value}</p>
+	<article>
+		{#each value.split('\n') as line}
+			{#if line === ''}
+				<br>
+			{:else}
+				<p>{line}</p>
+			{/if}
+		{/each}
+	</article>
 {/if}
 
 <style>
