@@ -1,12 +1,12 @@
 ---
-import RichText from '../cms/ui_fields/RichText.svelte';
-import Image from '../cms/ui_fields/Image.svelte';
-import Hero from './Hero.vue'
+import RichText from '../cms/fields/RichText.svelte';
+import Image from '../cms/fields/Image.svelte';
+import HeroVue from './Hero.vue'
 
 
 ---
 
-<Hero>
+<HeroVue>
 	<Image 
 		slot="image" 
 		client:load 
@@ -16,4 +16,4 @@ import Hero from './Hero.vue'
 		client:load 
 		value="text" 
 	/>
-</Hero>
+</HeroVue>

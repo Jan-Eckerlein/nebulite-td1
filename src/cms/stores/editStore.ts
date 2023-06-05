@@ -1,3 +1,3 @@
 import { writable } from 'svelte/store';
 
-export const editMode = writable<boolean>(true)
+export const editMode = writable<boolean>(false)
