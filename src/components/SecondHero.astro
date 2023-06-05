@@ -2,16 +2,20 @@
 import SecondHeroReact from './SecondHero.jsx'
 import RichText from '../cms/fields/RichText.svelte';
 import Image from '../cms/fields/Image.svelte';
+
+const { image, text } = Astro.props;
 ---
 
 <SecondHeroReact>
 	<Image 
 		slot="image" 
-		client:load 
+		client:load
+		{...image}
+
 	/>
 	<RichText 
 		slot="text" 
 		client:load 
-		value="text" 
+		value={text}
 	/>
 </SecondHeroReact>

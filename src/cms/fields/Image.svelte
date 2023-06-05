@@ -39,14 +39,14 @@
 			<label>
 				<span class="font-mono">Position X, Y </span>
 				<select class="cms-edit" bind:value={positionX}>
-					<option value="top">Top</option>
-					<option value="center">Center</option>
-					<option value="bottom">Bottom</option>
-				</select>
-				<select class="cms-edit" bind:value={positionY}>
 					<option value="left">Left</option>
 					<option value="center">Center</option>
 					<option value="right">Right</option>
+				</select>
+				<select class="cms-edit" bind:value={positionY}>
+					<option value="top">Top</option>
+					<option value="center">Center</option>
+					<option value="bottom">Bottom</option>
 				</select>
 			</label>
 		</div>

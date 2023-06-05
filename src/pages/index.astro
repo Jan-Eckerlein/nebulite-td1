@@ -1,14 +1,31 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import SecondHero from '../components/SecondHero.astro';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import SecondHero from "../components/SecondHero.astro";
+import EditToggle from "../cms/elements/EditToggle.svelte";
 
+const layout = [
+	{
+		component: "Hero",
+	},
+	{
+		component: "SecondHero",
+	},
+];
+
+const image = {
+	src: "https://www.mxwiki.com/password/wp-content/plugins/accelerated-mobile-pages/images/SD-default-image.png",
+	alt: "Image",
+	sizing: "cover",
+	positionX: "center",
+	positionY: "top",
+};
 ---
 
 <Layout title="Nebulite Techdemo 1">
-	<Hero/>
-	<SecondHero/>
+	<EditToggle client:idle />
+	<!-- <Hero/> -->
+	<SecondHero text="Hello World" {image} />
 </Layout>
 
-<style>
-</style>
+<style></style>
