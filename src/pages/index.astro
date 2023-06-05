@@ -1,15 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import EditToggle from "../cms/elements/EditToggle.svelte";
-// import SecondHero from "../components/SecondHero";
 
-
-const components = Object.entries(await Astro.glob("../components/*.astro")).map(([_, component]) => ({
-	name: component.file.split("/").pop()?.split(".")[0],
-	default: component.default,
-}));
-
-console.log(components);
+let components: {[key: string]: any} = {};
+Object.entries(await Astro.glob("../components/*.astro")).forEach(([_, c]) => {
+	const name: string = c.file.split("/").pop()?.split(".")[0] ?? '';
+	if (!name) return;
+	components[name] = c;
+});
 
 const layout = [
 	{
@@ -20,7 +18,20 @@ const layout = [
 		props: {
 			text: "Hello World",
 			image: {
-				src: "https://www.mxwiki.com/password/wp-content/plugins/accelerated-mobile-pages/images/SD-default-image.png",
+				src: "https://cdn.pixabay.com/photo/2023/05/29/16/55/pie-8026562_1280.jpg",
+				alt: "Image",
+				sizing: "cover",
+				positionX: "center",
+				positionY: "top",
+			},
+		},
+	},
+	{
+		component: "SecondHero",
+		props: {
+			text: "This is a very special Hero, believe me.",
+			image: {
+				src: "https://cdn.pixabay.com/photo/2023/05/31/09/57/skyscraper-8030987_1280.jpg",
 				alt: "Image",
 				sizing: "cover",
 				positionX: "center",
@@ -33,18 +44,9 @@ const layout = [
 
 <Layout title="Nebulite Techdemo 1">
 	<EditToggle client:idle />
-
-	{components.map(component => <component.default />)}
-
-	<!-- {components.map((component) => {
-		return <component.default />;
-		const name = component.path.split("/").pop().split(".")[0];
-		const props = layout.find((c) => c.component === name)?.props;
-		return <{name} {...props} />;
-	})} -->
-
-	<!-- <Hero/> -->
-	<!-- <SecondHero /> -->
+	{layout.map(({ component, props }) =>
+		<components[component].default {...props}  />
+	)}
 </Layout>
 
 <style></style>
